@@ -1,16 +1,16 @@
 import { Container, Paper, TextField, Typography, Button, Box } from '@mui/material';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-function Login() {
-    const [isLogin, setIsLogin] = useState(true);
+function Register() {
+    const [isRegister, setIsRegister] = useState(true);
 
-    const handleLogin = (event) => {
+    const handleRegister = (event) => {
         event.preventDefault();
-        // Add login logic here
+        // Add Register logic here
     };
 
-    const toggleLogin = () => {
-        setIsLogin(!isLogin);
+    const toggleRegister = () => {
+        setIsRegister(!isRegister);
     };
 
     return (
@@ -20,20 +20,29 @@ function Login() {
                 flexDirection: 'column',
                 justifyContent: 'center',
                
-                minHeight: '100vh',
+                minHeight: '80vh',
+                marginTop:'5px'  
             }}
         >
             <Container component={"main"} maxWidth="sm">
                 <Paper elevation={3} sx={{ padding: 4, display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '100vh', justifyContent: 'center' }}>
-                    {isLogin ? (
+                    {isRegister ? (
                         <>
-                            <Typography variant="h5">Login</Typography>
-                            <form className="flex items-center flex-col justify-center " onSubmit={handleLogin} style={{ width: '100%' }}>
+                            <Typography variant="h5">Register</Typography>
+                            <form className="flex items-center flex-col justify-center " onSubmit={handleRegister} style={{ width: '100%' }}>
                                 <TextField
                                     required
                                     label="Username"
                                     margin="normal"
                                     variant="outlined"
+                                    fullWidth
+                                />
+                                 <TextField
+                                    required
+                                    label="Email"
+                                    margin="normal"
+                                    variant="outlined"
+                                    
                                     fullWidth
                                 />
                                 <TextField
@@ -44,8 +53,9 @@ function Login() {
                                     type="password" 
                                     fullWidth
                                 />
+                               
                                 <Button type="submit" variant="contained" color="primary" sx={{ mt: 2 }}>Submit</Button>
-                                <Button sx={{ mt: 2 }} component={Link} to="/register">Sign Up Instead </Button> 
+                                <Button sx={{ mt: 2 }} component={Link} to="/login">Already Registered? Login  </Button> 
                             </form>
                         </>
                     ) : (
@@ -57,4 +67,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default Register;
